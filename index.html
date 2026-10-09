@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Security Gateway - Node 01</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 35px;
+            width: 380px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            text-align: center;
+        }
+        h2 { color: #58a6ff; margin-bottom: 6px; letter-spacing: 1px; }
+        p.subtitle { color: #8b949e; font-size: 13px; margin-bottom: 25px; }
+        .input-group { margin-bottom: 18px; text-align: left; }
+        label { display: block; font-size: 12px; margin-bottom: 6px; color: #8b949e; font-weight: 600; }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #f0f6fc;
+            font-size: 14px;
+        }
+        input:focus { border-color: #58a6ff; outline: none; }
+        button {
+            width: 100%;
+            padding: 11px;
+            background-color: #238636;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #2ea043; }
+        #error-msg {
+            color: #f85149;
+            font-size: 13px;
+            margin-top: 15px;
+            display: none;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h2>DEFENSE NODE 01</h2>
+        <p class="subtitle">Authorized Personnel & Incident Responders Only</p>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label for="teamId">REGISTERED TEAM NAME</label>
+                <input type="text" id="teamId" placeholder="Enter exact team name" required autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <label for="password">ACCESS TOKEN</label>
+                <input type="password" id="password" placeholder="••••••••••••" required>
+            </div>
+
+            <!-- ======================================================== -->
+            <!-- DEV NOTE: Staging build v2.4                              -->
+            <!-- Temporary master access token is: K3y_T0_Th3_G4t3!       -->
+            <!-- Clean up credentials before production staging!           -->
+            <!-- ======================================================== -->
+
+            <button type="submit">Authenticate</button>
+            <div id="error-msg"></div>
+        </form>
+    </div>
+
+    <script>
+        // Registered teams whitelist (case-insensitive lookup)
+        const registeredTeams = [
+            "Bro code", "Rick&Morty", "Enthino Vendi Thilakkuna Sambar", "Black Hat",
+            "H TRIPLE A", "DRNA", "Vision", "Alpha", "Fafa", "INGSOC",
+            "Team Euphoria", "The Mavericks", "Binary Brothers", "Slytherin",
+            "Dynamos", "Matrix", "Sharavana family", "Avis", "404 Founders",
+            "Momos mafia", "Error 404", "Trojan Mouse", "Anwitaa Rahul", "Xyron",
+            "Nemesis", "ZeroOne", "Unnikrishnan", "Beacon", "Cyber Core",
+            "Orbitters", "Mechkao", "Implements", "Danger boys",
+            "Black Horse Regiment", "The Glitch Squad", "Skyline"
+        ];
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const enteredTeam = document.getElementById("teamId").value.trim();
+            const enteredPass = document.getElementById("password").value;
+            const errorDiv = document.getElementById("error-msg");
+
+            // Normalize input for case-insensitive matching
+            const matchedTeam = registeredTeams.find(
+                team => team.toLowerCase() === enteredTeam.toLowerCase()
+            );
+
+            if (!matchedTeam) {
+                errorDiv.innerText = "Team name not found on the registered roster.";
+                errorDiv.style.display = "block";
+                return;
+            }
+
+            if (enteredPass !== "K3y_T0_Th3_G4t3!") {
+                errorDiv.innerText = "Invalid Access Token. Access Denied.";
+                errorDiv.style.display = "block";
+                return;
+            }
+
+            // Authentication successful: store canonical team name and redirect
+            sessionStorage.setItem("quest_team", matchedTeam);
+            window.location.href = "dashboard.html";
+        }
+    </script>
+</body>
+</html>

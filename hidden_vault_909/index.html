@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archival Storage - Node Vault</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: monospace;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .vault-box {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 30px;
+            width: 100%;
+            max-width: 560px;
+        }
+        h2 { color: #f0883e; margin-top: 0; }
+        .file-item {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-access {
+            background: #238636;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 9px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 13px;
+            display: inline-block;
+        }
+        .btn-access:hover { background: #2ea043; }
+        .meta { font-size: 12px; color: #8b949e; line-height: 1.5; }
+    </style>
+</head>
+<body>
+
+    <div class="vault-box">
+        <h2>[!] RESTRICTED ARCHIVE STORAGE</h2>
+        <p>This directory is excluded from indexing. Retrieve authorized diagnostic logs below.</p>
+        <hr style="border-color: #30363d;">
+
+        <div class="file-item">
+            <div>
+                <strong>incident_chat.txt</strong><br>
+                <span class="meta">Size: 1.1 KB | Storage: Offsite Cloud Mirror</span>
+            </div>
+            <a href="https://drive.google.com/file/d/1sZvlpmIHFTjkDxX3QK70S1ZejrnZIYZm/view?usp=sharing" target="_blank" class="btn-access">Access Log</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operation Blackout — Suspect Dossiers</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            background-color: #0b0f14;
+            color: #c9d1d9;
+            font-family: 'Consolas', 'Courier New', monospace;
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 950px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+            overflow: hidden;
+        }
+        .header {
+            background: #21262d;
+            padding: 14px 20px;
+            font-size: 13px;
+            color: #8b949e;
+            border-bottom: 1px solid #30363d;
+        }
+        .body-panel { padding: 28px; }
+        h2 { color: #58a6ff; margin-top: 0; }
+        p.desc { color: #8b949e; line-height: 1.6; font-size: 14px; margin-bottom: 24px; }
+        
+        .cv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .cv-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .cv-card h3 {
+            margin: 0 0 12px 0;
+            color: #58a6ff;
+            font-size: 16px;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 8px;
+        }
+        .tag-cleared {
+            color: #7ee787;
+            font-weight: bold;
+        }
+        .suspect-card {
+            border: 1px solid #f85149;
+            box-shadow: 0 0 15px rgba(248, 81, 73, 0.15);
+        }
+        .suspect-card h3 { color: #f85149; }
+        .coord-box {
+            color: #f85149;
+            font-weight: bold;
+            background: rgba(248, 81, 73, 0.12);
+            padding: 6px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+        .mission-footer {
+            background: #1c2128;
+            border: 1px solid #30363d;
+            border-left: 4px solid #7ee787;
+            border-radius: 6px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .mission-footer h4 { margin: 0; color: #f0f6fc; }
+        .mission-footer p { margin: 0; color: #8b949e; font-size: 13px; line-height: 1.5; }
+        .submit-btn {
+            align-self: flex-start;
+            background: #238636;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover { background: #2ea043; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">● ● ● Bastion Security Network — Personnel Archive [Classified]</div>
+        <div class="body-panel">
+            <h2>Operation Blackout: Suspect Dossiers</h2>
+            <p class="desc">
+                Log analysis from the compromised core identified three individuals with root cryptographic access.
+                Two personnel have been located and questioned. The rogue operative's location was transmitted only as raw GPS telemetry.
+            </p>
+
+            <div class="cv-grid">
+                <!-- Person 1 -->
+                <div class="cv-card">
+                    <div>
+                        <h3>Dossier 01: Marcus Vance</h3>
+                        <p><strong>Designation:</strong> Core Infrastructure Architect<br>
+                        <strong>Clearance:</strong> Level 4 (Network Ops)<br>
+                        <strong>Assigned Station:</strong> <span class="tag-cleared">Munich, Germany</span><br>
+                        <strong>Status:</strong> Cleared of breach</p>
+                    </div>
+                </div>
+
+                <!-- Person 2 -->
+                <div class="cv-card">
+                    <div>
+                        <h3>Dossier 02: Elena Rostova</h3>
+                        <p><strong>Designation:</strong> Cryptographic Lead<br>
+                        <strong>Clearance:</strong> Level 5 (Vault Ciphers)<br>
+                        <strong>Assigned Station:</strong> <span class="tag-cleared">Tokyo, Japan</span><br>
+                        <strong>Status:</strong> Cleared of breach</p>
+                    </div>
+                </div>
+
+                <!-- Person 3: The Target -->
+                <div class="cv-card suspect-card">
+                    <div>
+                        <h3>Dossier 03: Subject Zero</h3>
+                        <p><strong>Designation:</strong> Unknown Operative / Mole<br>
+                        <strong>Clearance:</strong> Revoked<br>
+                        <strong>Last Known Signal:</strong><br>
+                        <span class="coord-box">9.6844, 76.3331</span><br><br>
+                        <strong>Status:</strong> <span style="color: #f85149; font-weight: bold;">ACTIVE / AT LARGE</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task & Final Google Form Button -->
+            <div class="mission-footer">
+                <h4>FINAL OBJECTIVE:</h4>
+                <p>
+                    Identify the exact town or place name corresponding to <strong>Subject Zero's GPS coordinates</strong> using satellite mapping. Submit your Team Name and the resolved Place Name in the Final Championship form to claim victory.
+                </p>
+                <a href="https://forms.gle/YOUR_FINAL_GOOGLE_FORM_ID" target="_blank" class="submit-btn">
+                    Submit Final Report (Google Form) ➔
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
